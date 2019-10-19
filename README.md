@@ -27,20 +27,21 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user_name|varchar|null: false|
+|name|varchar|null: false|
 |mail_adress|varchar|null: false|
 |password|varchar|null: false|
 
 ### Association
 - has_many :messages
 - has_many :groups,through: groups_users
+- has_many :groups_users
 
 ## messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
-|image|string|null: false,|
+|body|text||
+|image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
@@ -51,12 +52,13 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_name|varchar|null: false, foreign_key: true|
+
+|name|varchar|null: false, foreign_key: true|
 
 ### Association
 - has_many :messages
 - has_many :users, through: groups_users
+- has_many :groups_users
 
 
 ## groups_usersテーブル
