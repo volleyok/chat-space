@@ -27,7 +27,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|varchar|null: false,add_index|
+|name|string|null: false,index: true|
 |mail_adress|varchar|null: false|
 |password|varchar|null: false|
 
