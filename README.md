@@ -27,13 +27,13 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|varchar|null: false|
+|name|varchar|null: false,add_index|
 |mail_adress|varchar|null: false|
 |password|varchar|null: false|
 
 ### Association
 - has_many :messages
-- has_many :groups,through: groups_users
+- has_many :groups, through: :groups_users
 - has_many :groups_users
 
 ## messagesテーブル
@@ -42,22 +42,23 @@ Things you may want to cover:
 |------|----|-------|
 |body|text||
 |image|string||
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
+- belongs_to :group
 
 ## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 
-|name|varchar|null: false, foreign_key: true|
+|name|string|null: false|
 
 ### Association
 - has_many :messages
-- has_many :users, through: groups_users
+- has_many :users, through: :groups_users
 - has_many :groups_users
 
 
@@ -65,8 +66,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
