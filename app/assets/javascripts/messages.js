@@ -1,6 +1,6 @@
 $(function() {
   function buildHTML(message) {
-   if (message.image) {
+    var imagehtml = message.image == null? "" : `<img src=${message.image} class="lower-message__image">`
     var html = 
     `<div class="message">
        <div class="message__upper-info">
@@ -16,29 +16,12 @@ $(function() {
         ${message.content}
         </p>
       </div>
-      <img src=${message.image} >
+      ${imagehtml}
     </div>`
     return html;
-  } else {
-    var html =
-    `<div class="message" data-id="${ message.id }" data-user_id="${message.user_id}"}>
-       <div class="message__upper-info">
-         <p class="message__upper-info__talker">
-          ${ message.user_name }
-        </p>
-        <p class="message__upper-info__date">
-          ${ message.created_at}
-        </p>
-      </div>
-      <div class="message__text">
-        <p class="lower-message__content">
-        ${message.content}
-        </p>
-      </div>
-    </div>`
-    return html;
-   };
-  }
+  } 
+ 
+  
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
     var formData = new FormData(this);
