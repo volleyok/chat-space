@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'messages#index'
+  devise_for :users
+  root    'groups#index'
+  resources :users, only: [:index, :edit, :update]
+  resources :groups, only: [:create, :new, :edit, :update] do
+    resources :messages, only: [:index,:edit,:update,:create,:destroy]
+  end
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
