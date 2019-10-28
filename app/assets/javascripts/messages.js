@@ -53,7 +53,6 @@ $(function() {
                   data: { last_id: last_message_id }
               })
               .done(function(messages) {
-                  console.log(messages)
                   var insertHTML = '';
                   messages.forEach(function(message) {
                       insertHTML = buildHTML(message);
