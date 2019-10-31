@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock "3.11.2"
 
-set :application, ""
+set :application, "chat-space"
 set :repo_url, 'git@github.com:volleyok/chat-space.git'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
