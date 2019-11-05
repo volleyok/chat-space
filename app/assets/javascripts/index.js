@@ -1,11 +1,12 @@
 $(document).on('turbolinks:load', function() {
-  　$(function() {
+  $(function() {
     function addUser(user) {
       let html = `
-        <div class="chat-group-user clearfix" id='chat-group-user-${user.id}'>
+        <div class="chat-group-user clearfix">
           <p class="chat-group-user__name">${user.name}</p>
           <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</div>
-        </div>`;
+        </div>
+      `;
       $("#user-search-result").append(html);
     }
   
@@ -21,7 +22,7 @@ $(document).on('turbolinks:load', function() {
       let html = `
       <div class="chat-group-user clearfix" id="${id}">
         <p class="chat-group-user__name">${name}</p>
-        <div class="chat-group-user__remove chat-group-user__btn" data-user-id="${id}" data-user-name="${name}">削除</div>
+        <div class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn" data-user-id="${id}" data-user-name="${name}">削除</div>
       </div>`;
       $(".js-add-user").append(html);
     }
@@ -54,16 +55,20 @@ $(document).on('turbolinks:load', function() {
           alert("通信エラーです。ユーザーが表示できません。");
         });
     });
-    $(document).on("click", ".user-search-add ", function() {
-      var userName = $(this).attr("data-user-name");
-      var userId = $(this).attr("data-user-id");
-      $(this) .parent().remove();
+    $(document).on("click", ".chat-group-user__btn--add", function() {
+      console.log
+      const userName = $(this).attr("data-user-name");
+      const userId = $(this).attr("data-user-id");
+      $(this)
+        .parent()
+        .remove();
       addDeleteUser(userName, userId);
       addMember(userId);
     });
-    $(document).on("click", ".chat-group-user__remove", function() {
-      $(this).parent().remove();
+    $(document).on("click", ".chat-group-user__btn--remove", function() {
+      $(this)
+        .parent()
+        .remove();
     });
-  });
- });
-;
+  });  
+});
