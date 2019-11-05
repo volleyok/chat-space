@@ -35,13 +35,13 @@ $(document).on('turbolinks:load', function() {
       $.ajax({
         type: "GET",
         url: "/users",
-        data: { keyword: input },
+        data: { keyword: input　},
         dataType: "json"
       })
         .done(function(users) {
           $("#user-search-result").empty();
   
-          if (users.length !== 0) {
+          if (users.length !== 0 && input.length !== 0) {
             users.forEach(function(user) {
               addUser(user);
             });
